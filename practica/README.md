@@ -73,7 +73,7 @@ python bot.py
 
 # Functioning
 
-The bot is quite simple to use. and it is possible to use all the commands described in the statement of the [project](https://github.com/jordi-petit/lp-polimomis-2020).
+The bot is quite simple to use, and it is possible to use all the commands described in the statement of the [project](https://github.com/jordi-petit/lp-polimomis-2020).
 You can always use the command /help to see the operations that bot can do.
 The bot can interact with different users at the same time, each user with their own polygons thanks to the context.user_data.
 
@@ -82,6 +82,7 @@ The bot can interact with different users at the same time, each user with their
 * [Telegram](https://core.telegram.org/bots) - For the bot
 * [pillow](https://lliçons.jutge.org/grafics/) - To draw the polygons
 * [PyCharm](https://www.jetbrains.com/es-es/pycharm/) - IDE used
+* [ANTRL4](https://www.antlr.org) - Used for the grammar
 
 # Author
 * Anas Infad
