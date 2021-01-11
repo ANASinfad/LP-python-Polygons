@@ -153,7 +153,7 @@ class ConvexPolygon:
         centroid = (round(Decimal(x), 3), round(Decimal(y), 3))
         return centroid
 
-    # Método que devuelve la unión de dos polígonos. Que resulta ser un convex hull, y por eso usamos la constructora de la clase.
+    # Método que devuelve la unión de dos polígonos. Que resulta ser un convex hull, y por eso se usa la constructora de la clase.
     def unionOfPolygons(self, polygon2):
         # En points vamos a tener la concatenación de los vértices de self y los vértices de polygon2 sin repeticiones.
         points = list(set(self.vertices) | set(polygon2.vertices))
@@ -253,6 +253,7 @@ def orientation(p1, p2, p3):
         return 2  # Counterclockwise
 
 
+# Método que comprueba los casos de intersección de los puntos p3 con p1 y p2 / p3 con p1 y p2 / p1 con p3 y p4 / p2 con p3 y p4
 def doIntersect(p1, p2, p3, p4):
     orient1 = orientation(p1, p2, p3)
     orient2 = orientation(p1, p2, p4)
@@ -279,7 +280,7 @@ def doIntersect(p1, p2, p3, p4):
     # p3, p4, p2 son colineales y p2 se encuentra en el segmento (p3, p4)
     if (orient4 == 0) and (onSegment(p3, p2, p4)):
         return True
-
+    # otherwise
     return False
 
 
@@ -295,7 +296,6 @@ def getBoundigBox(polygonsList):
     xmax, xmin, ymax, ymin = getMaxAndMinPoints(finalList)
     bottomLeft = (round(Decimal(xmin), 3), round(Decimal(ymin), 3))
     topRight = (round(Decimal(xmax), 3), round(Decimal(ymax), 3))
-    print(topRight)
 
     topLeft = (bottomLeft[0], topRight[1])
     bottomRight = (topRight[0], bottomLeft[1])
@@ -322,7 +322,7 @@ def getMaxAndMinPoints(finalList):
     return xmax, xmin, ymax, ymin
 
 
-# Método que dibuja los polígonos que hay en la lista polygonsList y lo guarda en el fichero output.png. La caja contenedora se usa para generar una escala.
+# Método que dibuja los polígonos que hay en la lista polygonsList y lo guarda en el fichero output.png. El bounding box se usa para generar una escala.
 def drawPolygons(polygonsList, outputFile):
     img = Image.new('RGB', (400, 400), 'White')
     dib = ImageDraw.Draw(img)
@@ -333,8 +333,14 @@ def drawPolygons(polygonsList, outputFile):
     bottomLeft = box[0]
     width = topRight[0] - bottomLeft[0]
     height = topRight[1] - bottomLeft[1]
-    scaleX = Decimal(398 / width)
-    scaleY = Decimal(398 / height)
+    if width != 0:
+        scaleX = Decimal(398 / width)
+    else:
+        scaleX = 1
+    if height != 0:
+        scaleY = Decimal(398 / height)
+    else:
+        scaleY = 1
     for polygon in polygonsList:
         color = polygon.getColor()
         dib.polygon(polygon.setScale(scaleX, scaleY), 'White', color)

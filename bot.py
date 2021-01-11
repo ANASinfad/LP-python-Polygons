@@ -1,7 +1,7 @@
-from telegram.ext import Updater, CommandHandler
 
-from practica.cl.EvalVisitor import EvalVisitor
-from practica.cl.script import execute_script
+from telegram.ext import Updater, CommandHandler
+from cl.EvalVisitor import EvalVisitor
+from cl.script import execute_script
 
 # Guardamos el visitor como parámetro global para no perder la información.
 visitor = EvalVisitor()
@@ -39,6 +39,7 @@ def assignPolygon(update, context):
     try:
         polygon = update.message.text[8:]
         execute_script(polygon, visitor)
+        context.bot.send_message(chat_id=update.effective_chat.id, text="Created successfully")
     except Exception as e:
         context.bot.send_message(chat_id=update.effective_chat.id, text="Error in grammar, please try again")
         assignFormat(context, update)
@@ -50,6 +51,7 @@ def color(update, context):
     try:
         entry = update.message.text[1:]
         execute_script(entry, visitor)
+        context.bot.send_message(chat_id=update.effective_chat.id, text="Color assigned successfully")
     except Exception as e:
         context.bot.send_message(chat_id=update.effective_chat.id, text="Error in grammar, please try again")
         colorFormat(context, update)

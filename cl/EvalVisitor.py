@@ -1,14 +1,14 @@
 import random
 from decimal import Decimal
 
-from .. import polygons
+import polygons
 
 if __name__ is not None and "." in __name__:
-    from practica.cl.ConvexPolygonParser import ConvexPolygonParser
-    from practica.cl.ConvexPolygonVisitor import ConvexPolygonVisitor
+    from .ConvexPolygonParser import ConvexPolygonParser
+    from .ConvexPolygonVisitor import ConvexPolygonVisitor
 else:
-    from practica.cl.ConvexPolygonParser import ConvexPolygonParser
-    from practica.cl.ConvexPolygonVisitor import ConvexPolygonVisitor
+    from ConvexPolygonParser import ConvexPolygonParser
+    from ConvexPolygonVisitor import ConvexPolygonVisitor
 
 
 class EvalVisitor(ConvexPolygonVisitor):

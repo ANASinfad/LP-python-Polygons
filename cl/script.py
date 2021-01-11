@@ -1,7 +1,8 @@
 from antlr4 import *
 
-from practica.cl.ConvexPolygonLexer import ConvexPolygonLexer
-from practica.cl.ConvexPolygonParser import ConvexPolygonParser
+from cl.ConvexPolygonLexer import ConvexPolygonLexer
+from cl.ConvexPolygonParser import ConvexPolygonParser
+
 
 
 def execute_script(entry, visitor):
