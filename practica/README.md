@@ -82,7 +82,7 @@ The bot can interact with different users at the same time, each user with their
 * [Telegram](https://core.telegram.org/bots) - For the bot
 * [pillow](https://lliçons.jutge.org/grafics/) - To draw the polygons
 * [PyCharm](https://www.jetbrains.com/es-es/pycharm/) - IDE used
-* [ANTRL4](https://www.antlr.org) - Used for the grammar
+* [ANTLR4](https://www.antlr.org) - Used for the grammar
 
 # Author
 * Anas Infad
