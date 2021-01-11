@@ -27,8 +27,7 @@ The things you need to install the software and how to install them
 	* [Python 3](https://www.python.org)
 
 * Other requirements:
-
-pip3 install -r requirements.txt (or pip)
+            pip3 install -r requirements.txt (or pip)
 
 Once the above requirements have been installed, all that remains is to install the ANTLR4 to be used in the compiler part.
 
@@ -39,11 +38,11 @@ Once the above requirements have been installed, all that remains is to install 
 
 * Install Python runtime:
 
-			* pip3 install antlr4-python3-runtime or
-			* pip install antlr4-python3-runtime
+			pip3 install antlr4-python3-runtime or
+			pip install antlr4-python3-runtime
 
 * Install Telegram Bot :
-			* pip3 install python-telegram-bot
+			pip3 install python-telegram-bot
 
 
 # Running
