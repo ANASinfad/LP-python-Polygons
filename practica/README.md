@@ -59,7 +59,7 @@ In the main folder you will find the following files:
 * bot ( a folder that contains the bot part)
 	* bot.py ( Code of the Telegram bot)
 
-In the first part of the poroject, we had to implement the class polygons.py such that it contains all the operations needed so the user can make computations with polygons and manage them.
+In the first part of the project, we had to implement the class polygons.py such that it contains all the operations needed so the user can make computations with polygons and manage them.
 To compile this class, simply use the command:
 python polygons.py
 
@@ -67,7 +67,7 @@ In the second part of the project, the compiler part had to be implemented to in
 In order to compile and execute this. the following command must be writen in the console:
 antlr4 -Dlanguage=Python3 -no-listener -visitor ConvexPolygon.g
 
-In the third part of the project, the bot part had to be implemented to manage the comunication between the bot and a user.
+In the third part of the project, the bot part had to be implemented to manage the communication between the bot and a user.
 To run the but execute the command:
 python bot.py
 
