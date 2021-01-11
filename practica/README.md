@@ -27,7 +27,8 @@ The things you need to install the software and how to install them
 	* [Python 3](https://www.python.org)
 
 * Other requirements:
-            pip3 install -r requirements.txt (or pip)
+  
+           pip3 install -r requirements.txt (or pip)
 
 Once the above requirements have been installed, all that remains is to install the ANTLR4 to be used in the compiler part.
 
