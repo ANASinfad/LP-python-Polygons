@@ -44,7 +44,9 @@ class EvalVisitor(ConvexPolygonVisitor):
             if element.getText() != '[' and element.getText() != ']' and element.getText() != ' ':
                 points.append(self.visit(element))
         poly = polygons.ConvexPolygon()
-        poly.contsructWithPoints(points)
+        # Comporbamos si no es un polígono vacio
+        if len(points) != 0:
+            poly.contsructWithPoints(points)
         return poly
 
     # Visita el árbol de análisis producido por ConvexPolygonParser # myprint
@@ -91,7 +93,6 @@ class EvalVisitor(ConvexPolygonVisitor):
     def visitCentroid(self, ctx: ConvexPolygonParser.CentroidContext):
         children = [n for n in ctx.getChildren()]
         result = self.visit(children[1]).getCentroid()
-        print(str(result[0]) + ' ' + str(result[1]))
         return result
 
     # Visita el árbol de análisis producido por ConvexPolygonParser # inside
@@ -164,14 +165,16 @@ class EvalVisitor(ConvexPolygonVisitor):
                     polygon = self.visit(children[1])
                     points = polygons.getBoundigBox([polygon])
                     poly = polygons.ConvexPolygon()
-                    poly.contsructWithPoints(points)
+                    if len(points) != 0:
+                        poly.contsructWithPoints(points)
                     return poly
                 # case ID
                 elif children[1].getText() in self.ListPolygons.keys():
                     polygon = self.ListPolygons[children[1].getText()]
                     points = polygons.getBoundigBox([polygon])
                     poly = polygons.ConvexPolygon()
-                    poly.contsructWithPoints(points)
+                    if len(points) != 0:
+                        poly.contsructWithPoints(points)
                     return poly
                 # case operator
                 else:

@@ -7,6 +7,7 @@ vertex: REAL SPACE REAL;
 
 convexpolygon : '[' (vertex (SPACE SPACE vertex)+) ']'
               | '[' vertex ']'
+              | '[' ']'
               ;
 
 asignment : ID SPACE EQUAL SPACE convexpolygon
@@ -34,9 +35,9 @@ equal: 'equal ' operator COMA SPACE operator;
 draw: 'draw ' '"' FILENAME '"' COMA SPACE( (operator (COMA SPACE operator)+) | operator);
 
 operator: '(' operator ')'
+        |'#' operator
         | operator ' * ' operator
         | operator ' + ' operator
-        | '#' operator
         | '!' REAL
         | convexpolygon
         | ID

@@ -38,7 +38,6 @@ def assignPolygon(update, context):
     try:
         polygon = update.message.text[8:]
         execute_script(polygon, visitor)
-        context.bot.send_message(chat_id=update.effective_chat.id, text="Created successfully")
     except Exception as e:
         context.bot.send_message(chat_id=update.effective_chat.id, text="Error in grammar, please try again")
         assignFormat(context, update)
@@ -61,7 +60,11 @@ def color(update, context):
 def polygon_print(update, context):
     try:
         entry = update.message.text[1:]
-        context.bot.send_message(chat_id=update.effective_chat.id, text=execute_script(entry, visitor))
+        command = execute_script(entry, visitor)
+        if len(command) == 0:
+            context.bot.send_message(chat_id=update.effective_chat.id, text="∅")
+        else:
+            context.bot.send_message(chat_id=update.effective_chat.id, text=execute_script(entry, visitor))
     except Exception as e:
         context.bot.send_message(chat_id=update.effective_chat.id, text="Error in grammar, please try again")
         printFormat(context, update)
@@ -109,7 +112,10 @@ def centroid(update, context):
     try:
         entry = update.message.text[1:]
         command = execute_script(entry, visitor)
-        context.bot.send_message(chat_id=update.effective_chat.id, text=str(command[0]) + ' ' + str(command[1]))
+        if command == ():
+            context.bot.send_message(chat_id=update.effective_chat.id, text="∅")
+        else:
+            context.bot.send_message(chat_id=update.effective_chat.id, text=str(command[0]) + ' ' + str(command[1]))
     except Exception as e:
         context.bot.send_message(chat_id=update.effective_chat.id, text="Error in grammar, please try again")
         centroidFormat(context, update)
@@ -161,8 +167,9 @@ def draw(update, context):
 def formatPolygon(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="A polygon can be defined in a different ways:\n"
                                                                     "With an ID Example: p1\nWith points Example: [1 1  0 2]\n"
+                                                                    "Empty Example: p1 := []\n"
                                                                     "With operations Example: p1 * p2 or #p1 or !12 or p1 + p2 or\n"
-                                                                    "[1 1] * p1 or[1 1] + p2 or [1 2  2 1] * [1 1]...")
+                                                                    "[1 1] * p1 or[1 1] + p2 or [1 2  2 1] * [1 1]...\n")
 
 
 # Método que lanza un mensaje que explica el formato de asignar un polígono a una variable.
@@ -170,6 +177,7 @@ def assignFormat(context, update):
     context.bot.send_message(chat_id=update.effective_chat.id,
                              text="The correct format is:\n/create p1 := [0 0  0 1  0.2 0.8] or\n"
                                   "/create p1 := p2 operation p3 or\n/create p1 := p2 operation [0 0  1 0] or\n"
+                                  "/create p1 := []\n"
                                   "/create p1 := [1 1  2 2] operation [1 1] or\n/create p1 := #p2 or\n/create p1 := !10\nwhere operations can be +, *, !, #")
 
 

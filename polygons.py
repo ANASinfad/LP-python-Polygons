@@ -22,7 +22,7 @@ class ConvexPolygon:
                 result += (str(x) + ' ' + str(y) + ' ')
             else:
                 result += (str(x) + ' ' + str(y))
-        print(result)
+        #print(result)
         return result
 
     # Método para definir el color del polígono
@@ -32,7 +32,7 @@ class ConvexPolygon:
         b = int(rgb[2] * 255)
         self.color = [r, g, b]
 
-    # Entrada: Una Lista de vértices.
+    # Entrada: Una Lista de vértices. Como precondición la lista de vértices como mínimo debe tener un punto.
     # Salida: Contsruye un Convex hull a partir de una lista de vértices.
     def contsructWithPoints(self, points):
         hull = []
@@ -117,11 +117,10 @@ class ConvexPolygon:
     def perimeter(self):
         perimeter = Decimal(0.0)
         n = len(self.vertices)
-        for i in range(0, n - 1):
-            perimeter += distance(self.vertices[i], self.vertices[i + 1])
+        for i in range(0, n):
+            j = (i + 1) % n
+            perimeter += distance(self.vertices[i], self.vertices[j])
 
-        # Sumamos a perimeter la distancia entre vertice 0 y el ultimo vertice
-        perimeter += distance(self.vertices[0], self.vertices[n - 1])
         return round(perimeter, 3)
 
     # Método que nos permite saber si el Polígono es regular o no.
@@ -138,6 +137,8 @@ class ConvexPolygon:
     # Método que devuelve el Centroide de un Polígono en forma de tupla (coordenadas).
     def getCentroid(self):
         n = len(self.vertices)
+        if n == 0:
+            return ()
         det = x = y = 0
         for i in range(0, n):
             j = (i + 1) % n
@@ -187,6 +188,9 @@ class ConvexPolygon:
         result = []
         n = len(self.vertices)
         m = len(polygon2.vertices)
+        if m == 0 or n == 0:
+            intersection = ConvexPolygon()
+            return intersection
         for i in range(0, n):
             if polygon2.pointIsInsidePolygon(self.vertices[i]):
                 addPointWithoutRepetitions(result, self.vertices[i])
@@ -292,7 +296,8 @@ def getBoundigBox(polygonsList):
     # Nos encargamos de eliminar los vértices repetidos en este bucle.
     for i in range(0, n):
         finalList = list(set(polygonsList[i].getVertices()) | set(finalList))
-
+    if len(finalList) == 0:
+        return []
     xmax, xmin, ymax, ymin = getMaxAndMinPoints(finalList)
     bottomLeft = (round(Decimal(xmin), 3), round(Decimal(ymin), 3))
     topRight = (round(Decimal(xmax), 3), round(Decimal(ymax), 3))
@@ -327,7 +332,9 @@ def drawPolygons(polygonsList, outputFile):
     img = Image.new('RGB', (400, 400), 'White')
     dib = ImageDraw.Draw(img)
     box = getBoundigBox(polygonsList)
-    if box[0] == box[1]:
+    if len(box) == 0:
+        raise NameError('You cannot draw empty polygons')
+    elif box[0] == box[1]:
         raise NameError('You cannot draw polygons with 1 vertex')
     topRight = box[1]
     bottomLeft = box[0]
@@ -342,8 +349,9 @@ def drawPolygons(polygonsList, outputFile):
     else:
         scaleY = 1
     for polygon in polygonsList:
-        color = polygon.getColor()
-        dib.polygon(polygon.setScale(scaleX, scaleY), 'White', color)
+        if polygon.numberOfVertices_edges() > 1:
+            color = polygon.getColor()
+            dib.polygon(polygon.setScale(scaleX, scaleY), 'White', color)
     img.save(outputFile)
 
 
