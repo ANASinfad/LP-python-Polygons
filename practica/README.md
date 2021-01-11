@@ -1,13 +1,22 @@
 # ConvexPolygons
 
-This project consists of a chatbot in Telegram that allows the creation of convex polygons and make different computations with the polygons.
+This project consists of a chatbot in Telegram that allows the creation of convex polygons and make different computations with the polygons such as:
+* Intersection of convex polygons
+* Union of convex polygons
+* Bounding Box of convex polygons
+* Check if a polygon is inside other
+* Check wether two polygons are equal
+* Draw polygons
+* Compute the centroid of convex polygons
+* Compute the number of vertices of a polygon
+
 To access the bot via Telegram just search @Anasbot and send him /start.
 
 ## Getting Started
 
 Before starting to execute the project 
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
