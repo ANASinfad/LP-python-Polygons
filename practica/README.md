@@ -43,7 +43,8 @@ Once the above requirements have been installed, all that remains is to install 
 			pip install antlr4-python3-runtime
 
 * Install Telegram Bot :
-			pip3 install python-telegram-bot
+  
+            pip3 install python-telegram-bot
 
 
 # Running
@@ -61,15 +62,18 @@ In the main folder you will find the following files:
 
 In the first part of the project, we had to implement the class polygons.py such that it contains all the operations needed so the user can make computations with polygons and manage them.
 To compile this class, simply use the command:
-python polygons.py
+
+            python polygons.py
 
 In the second part of the project, the compiler part had to be implemented to interpret the language defined in the statement. A grammar has been created for this language so that a polygons in AST format can be passed to an instance of the polygons class.
 In order to compile and execute this. the following command must be writen in the console:
-antlr4 -Dlanguage=Python3 -no-listener -visitor ConvexPolygon.g
+
+            antlr4 -Dlanguage=Python3 -no-listener -visitor ConvexPolygon.g
 
 In the third part of the project, the bot part had to be implemented to manage the communication between the bot and a user.
 To run the but execute the command:
-python bot.py
+
+            python bot.py
 
 # Functioning
 
