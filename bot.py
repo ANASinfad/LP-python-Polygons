@@ -1,4 +1,3 @@
-
 from telegram.ext import Updater, CommandHandler
 from cl.EvalVisitor import EvalVisitor
 from cl.script import execute_script

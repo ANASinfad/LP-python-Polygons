@@ -62,6 +62,7 @@ In the main folder you will find the following files:
     * EvalVisitor.py (class used to travel the trees generated from the grammar. This class inherits from
       ConvexPolygonVisitor)
 * bot.py ( Code of the Telegram bot) 
+* Token.txt (Token corresponding to the bot)
 
 In the first part of the project, we had to implement the class polygons.py such that it contains all the operations
 needed so the user can make computations with polygons and manage them. To compile this class, simply use the command:

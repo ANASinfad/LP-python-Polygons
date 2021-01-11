@@ -4,7 +4,6 @@ from cl.ConvexPolygonLexer import ConvexPolygonLexer
 from cl.ConvexPolygonParser import ConvexPolygonParser
 
 
-
 def execute_script(entry, visitor):
     input_stream = InputStream(entry)
     if str(input_stream) != "exit":
